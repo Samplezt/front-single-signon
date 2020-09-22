@@ -1,17 +1,16 @@
 <template>
   <div class="login">
-    <h1 class="title">Login in the page</h1>
+    <h1 class="title">Login</h1>
     <form action class="form" @submit.prevent="login">
-      <label class="form-label" for="#email">Email:</label>
+      <label class="form-label" for="#username">Usuario</label>
       <input
-        v-model="email"
+        v-model="username"
         class="form-input"
-        type="email"
-        id="email"
+        id="username"
         required
-        placeholder="Email"
+        placeholder="usuario"
       >
-      <label class="form-label" for="#password">Password:</label>
+      <label class="form-label" for="#password">Password</label>
       <input
         v-model="password"
         class="form-input"
@@ -19,6 +18,11 @@
         id="password"
         placeholder="Password"
       >
+      <div>
+        <label class="form-label" for="#selector">Modulo</label>
+        <b-form-select class="select-options" v-model="selected" :options="options"></b-form-select>
+        <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
+      </div>
       <p v-if="error" class="error">Has introducido mal el email o la contraseña.</p>
       <input class="form-submit" type="submit" value="Login">
     </form>
@@ -32,20 +36,31 @@
 import auth from "@/logic/auth";
 export default {
   data: () => ({
-    email: "",
+    username: "",
     password: "",
-    error: false
+    error: false,
+    selected: null,
+        options: [
+          { value: null, text: 'Seleccionar modulo' },
+          { value: 'https://www.sarasa.com/itinerarios.html', text: 'Itinerarios' },
+          { value: '/reclamos.html', text: 'Reclamos' },
+          { value: '/alquilerpasajes.html', text: 'Alquiler de pasajes' },
+          { value: { D: '3PO' }, text: 'This is an option with object value' }
+        ]
   }),
   methods: {
     async login() {
       try {
-        await auth.login(this.email, this.password);
+        const response = await auth.login(this.username, this.password);
+        const token = response.data.token;
         const user = {
-          email: this.email
+          username: this.username
         };
         auth.setUserLogged(user);
-        this.$router.push("/");
+        auth.setJwt(token)
+        this.$router.push(this.selected);
       } catch (error) {
+        console.log(this.selected);
         console.log(error);
         this.error = true;
       }
@@ -60,6 +75,7 @@ export default {
 }
 .title {
   text-align: center;
+  color: white;
 }
 .form {
   margin: 3rem auto;
@@ -107,7 +123,7 @@ export default {
 }
 .error {
   margin: 1rem 0 0;
-  color: #ff4a96;
+  color: #fd0000;
 }
 .msg {
   margin-top: 3rem;

@@ -22,7 +22,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  background: #e0ddda;
+  background: #000000;
   width: 100%;
   height: 100%;
 }

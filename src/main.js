@@ -2,6 +2,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 import Router from "vue-router";
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import App from "./App";
 import Home from "./views/Home";
@@ -9,6 +12,8 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 
 Vue.use(Router);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
 const routes = [
   { path: "/", component: Home },
