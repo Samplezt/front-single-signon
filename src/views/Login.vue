@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <h1 class="title">Login</h1>
-    <form action class="form" @submit.prevent="login">
+    <form action class="form" @submit="login">
       <label class="form-label" for="#username">Usuario</label>
       <input
         v-model="username"
@@ -42,23 +42,23 @@ export default {
     selected: null,
         options: [
           { value: null, text: 'Seleccionar modulo' },
-          { value: 'https://www.sarasa.com/itinerarios.html', text: 'Itinerarios' },
-          { value: '/reclamos.html', text: 'Reclamos' },
-          { value: '/alquilerpasajes.html', text: 'Alquiler de pasajes' },
-          { value: { D: '3PO' }, text: 'This is an option with object value' }
+          { value: 'AlquileresAutos', text: 'Alquiler de autos' },
+          { value: 'VentaPasajes', text: 'Venta de pasajes' },
+          { value: 'ManejoItinerarios', text: 'Itinerarios' },
+          { value: 'Reclamos', text: 'Reclamos' }
         ]
   }),
   methods: {
     async login() {
       try {
-        const response = await auth.login(this.username, this.password);
-        const token = response.data.token;
-        const user = {
-          username: this.username
-        };
-        auth.setUserLogged(user);
-        auth.setJwt(token)
-        this.$router.push(this.selected);
+        auth.loginCallback(this.username, this.password, this.selected);
+        //const token = response.data.token;
+        //const user = {
+        //  username: this.username
+        //};
+        //auth.setUserLogged(user);
+        //auth.setJwt(token)
+        //this.$router.push("/");
       } catch (error) {
         console.log(this.selected);
         console.log(error);

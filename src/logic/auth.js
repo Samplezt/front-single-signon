@@ -25,5 +25,19 @@ export default {
     }
     const user = { username, password };
     return axios.post(ENDPOINT_PATH + "Login", user, config);
+  },
+
+  loginCallback(usuario, password, tenant) {
+    let config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }
+    const formData = new FormData();
+    formData.append('usuario',usuario);
+    formData.append('password',password);
+    formData.append('tenant',tenant);
+    //const datosLogin = { usuario, password, tenant };
+    return axios.post(ENDPOINT_PATH + "LoginCallback", formData, config);
   }
 };
