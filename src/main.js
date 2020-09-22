@@ -7,18 +7,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import App from "./App";
-import Home from "./views/Home";
 import Login from "./views/Login";
-import Register from "./views/Register";
 
 Vue.use(Router);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/login", component: Login },
-  { path: "/register", component: Register }
+  { path: "/", component: Login }
 ];
 
 const router = new Router({

@@ -1,9 +1,11 @@
 <template>
   <div class="login">
     <h1 class="title">Login</h1>
-    <form action class="form" @submit="login">
+    <form class="form" action="https://ssoia.herokuapp.com/LoginCallback" method="post">
       <label class="form-label" for="#username">Usuario</label>
       <input
+        type="text"
+        name="usuario"
         v-model="username"
         class="form-input"
         id="username"
@@ -13,6 +15,7 @@
       <label class="form-label" for="#password">Password</label>
       <input
         v-model="password"
+        name="password"
         class="form-input"
         type="password"
         id="password"
@@ -21,14 +24,12 @@
       <div>
         <label class="form-label" for="#selector">Modulo</label>
         <b-form-select class="select-options" v-model="selected" :options="options"></b-form-select>
+        <input type="hidden" name="tenant" class="form-control" :value="selected">
         <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
       </div>
       <p v-if="error" class="error">Has introducido mal el email o la contraseña.</p>
       <input class="form-submit" type="submit" value="Login">
     </form>
-    <p class="msg">¿No tienes cuenta?
-      <router-link to="/register">Regístrate</router-link>
-    </p>
   </div>
 </template>
 
