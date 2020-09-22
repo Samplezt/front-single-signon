@@ -8,16 +8,19 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import App from "./App";
 import Login from "./views/Login";
+import LoginError from "./views/LoginError";
 
 Vue.use(Router);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
 const routes = [
-  { path: "/", component: Login }
+  { path: "/", component: Login },
+  { path: "/LoginError", component: LoginError}
 ];
 
 const router = new Router({
+  mode:'history',
   routes
 });
 
