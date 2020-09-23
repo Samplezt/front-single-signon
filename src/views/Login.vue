@@ -10,7 +10,7 @@
         class="form-input"
         id="username"
         required
-        placeholder="usuario"
+        placeholder="Usuario"
       >
       <label class="form-label" for="#password">Password</label>
       <input
@@ -19,13 +19,12 @@
         class="form-input"
         type="password"
         id="password"
-        placeholder="Password"
+        placeholder="Contraseña"
       >
-      <div>
+      <div class="selector">
         <label class="form-label" for="#selector">Modulo</label>
         <b-form-select class="select-options" v-model="selected" :options="options"></b-form-select>
         <input type="hidden" name="tenant" class="form-control" :value="selected">
-        <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
       </div>
       <p v-if="error" class="error">Has introducido mal el email o la contraseña.</p>
       <input class="form-submit" type="submit" value="Login">
@@ -92,7 +91,7 @@ export default {
   box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
 }
 .form-label {
-  margin-top: 2rem;
+  margin-top: 1rem;
   color: white;
   margin-bottom: 0.5rem;
   &:first-of-type {
@@ -122,6 +121,11 @@ export default {
     background: #0b9185;
   }
 }
+
+.selector {
+  margin-top: 1rem;
+}
+
 .error {
   margin: 1rem 0 0;
   color: #fd0000;

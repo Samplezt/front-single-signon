@@ -3,11 +3,11 @@
         <div class="row">
             <div class="center-block">
                 <div class="error-block">
-                     <p><b>Oops! Alo fue mal</b></p>
+                     <p><b>Ocurrio un error al ingresar al sistema, intente nuevamente.</b></p>
                      <p>Error: {{$route.query.ERROR}}</p>
                     <li>
                     <router-link to="/">
-                        <b-button variant="outline-info" class="mb-2">
+                        <b-button variant="outline-info" class="mb-2 error-color">
                             <b-icon icon="power" aria-hidden="true"></b-icon> Login
                         </b-button>
                     </router-link>
@@ -19,6 +19,12 @@
 </template>
 
 <style lang="scss" scoped>
+    .error-color:hover {
+        background-color: #1ab188;
+    }
+    .error-color{
+        color: white;
+    }
     ul {
     margin: 0;
     padding: 0;
