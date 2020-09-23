@@ -4,6 +4,7 @@
             <div class="center-block">
                 <div class="error-block">
                      <p><b>Oops! Alo fue mal</b></p>
+                     <p>Error: {{$route.query.ERROR}}</p>
                     <li>
                     <router-link to="/">
                         <b-button variant="outline-info" class="mb-2">

@@ -16,7 +16,7 @@ Vue.use(IconsPlugin);
 
 const routes = [
   { path: "/", component: Login },
-  { path: "/LoginError", component: LoginError}
+  { path: "/LoginError*", component: LoginError}
 ];
 
 const router = new Router({
