@@ -45,7 +45,8 @@ export default {
           { value: 'AlquileresAutos', text: 'Alquiler de autos' },
           { value: 'VentaPasajes', text: 'Venta de pasajes' },
           { value: 'ManejoItinerarios', text: 'Itinerarios' },
-          { value: 'Reclamos', text: 'Reclamos' }
+          { value: 'Reclamos', text: 'Reclamos' },
+          { value: 'DEMO', text: 'DEMO'}
         ]
   }),
   methods: {
