@@ -22,9 +22,7 @@
         placeholder="Contraseña"
       >
       <div class="selector">
-        <label class="form-label" for="#selector">Modulo</label>
-        <b-form-select class="select-options" v-model="selected" :options="options"></b-form-select>
-        <input type="hidden" name="tenant" class="form-control" :value="selected">
+        <input type="hidden" name="tenant" class="form-control" :value="$route.query.tenant">
       </div>
       <p v-if="error" class="error">Has introducido mal el email o la contraseña.</p>
       <input class="form-submit" type="submit" value="Login">
