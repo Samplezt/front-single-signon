@@ -3,8 +3,7 @@
         <div class="row">
             <div class="center-block">
                 <div class="error-block">
-                     <p><b>Ocurrio un error al ingresar al sistema, intente nuevamente.</b></p>
-                     <p>{{parseError($route.query.ERROR)}}</p>
+                     <p><b>{{parseError($route.query.ERROR)}}, intente nuevamente</b></p>
                     <li>
                     <router-link to="/">
                         <b-button variant="outline-info" class="mb-2 error-color">
