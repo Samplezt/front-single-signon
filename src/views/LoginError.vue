@@ -4,7 +4,7 @@
             <div class="center-block">
                 <div class="error-block">
                      <p><b>Ocurrio un error al ingresar al sistema, intente nuevamente.</b></p>
-                     <p>Error: {{$route.query.ERROR}}</p>
+                     <p>{{parseError($route.query.ERROR)}}</p>
                     <li>
                     <router-link to="/">
                         <b-button variant="outline-info" class="mb-2 error-color">
@@ -17,6 +17,24 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        methods: {
+            parseError(errorMsg) {
+                errorMsg = errorMsg.replace(/['"]+/g, '');
+                errorMsg = errorMsg.replace('{ERROR:','');
+                errorMsg = errorMsg.replace('}','');
+                return (errorMsg);
+                
+            }
+            
+        }
+            
+            }
+
+
+</script>
 
 <style lang="scss" scoped>
     .error-color:hover {
