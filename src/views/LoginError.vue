@@ -22,7 +22,7 @@
         methods: {
             parseError(errorMsg) {
                 errorMsg = errorMsg.replace(/['"]+/g, '');
-                errorMsg = errorMsg.replace('{ERROR:','');
+                errorMsg = errorMsg.replace('{DESC:','');
                 errorMsg = errorMsg.replace('}','');
                 return (errorMsg);
                 
