@@ -31,40 +31,12 @@
 </template>
 
 <script>
-import auth from "@/logic/auth";
 export default {
   data: () => ({
     username: "",
     password: "",
-    error: false,
-    selected: null,
-        options: [
-          { value: null, text: 'Seleccionar modulo' },
-          { value: 'AlquileresAutos', text: 'Alquiler de autos' },
-          { value: 'VentaPasajes', text: 'Venta de pasajes' },
-          { value: 'ManejoItinerarios', text: 'Itinerarios' },
-          { value: 'Reclamos', text: 'Reclamos' },
-          { value: 'DEMO', text: 'DEMO'}
-        ]
-  }),
-  methods: {
-    async login() {
-      try {
-        auth.loginCallback(this.username, this.password, this.selected);
-        //const token = response.data.token;
-        //const user = {
-        //  username: this.username
-        //};
-        //auth.setUserLogged(user);
-        //auth.setJwt(token)
-        //this.$router.push("/");
-      } catch (error) {
-        console.log(this.selected);
-        console.log(error);
-        this.error = true;
-      }
-    }
-  }
+    error: false
+  })
 };
 </script>
 
