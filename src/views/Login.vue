@@ -1,9 +1,10 @@
 
 <template>
   <div class="login">
-    <h1 class="title">Login</h1>
+    <h1 class="title"><b-icon icon="cursor-fill" shift-h="-7" shift-v="12"></b-icon> Login {{tenantTitle}}</h1>
     <form class="form" action="https://ssoia.herokuapp.com/LoginCallback" method="post">
-      <label class="form-label" for="#username">Usuario</label>
+      <label class="form-label" for="#username">
+        <b-icon icon="person-fill" shift-h="-5"></b-icon>Usuario</label>
       <input
         type="text"
         name="usuario"
@@ -13,7 +14,8 @@
         required
         placeholder="Usuario"
       >
-      <label class="form-label" for="#password">Password</label>
+      <label class="form-label" for="#password">
+        <b-icon icon="lock-fill" shift-h="-5"></b-icon>Contraseña</label>
       <input
         v-model="password"
         name="password"
@@ -24,9 +26,9 @@
         placeholder="Contraseña"
       >
       <div class="selector">
-        <input type="hidden" name="tenant" class="form-control" :value="$route.query.tenant">
+        <input type="hidden" name="tenant" class="form-control" :value="$route.query.tenant || $route.query.TENANT">
       </div>
-      <p v-if="error" class="error">Has introducido mal el email o la contraseña.</p>
+      <p v-if="error" class="error"><b>Has introducido mal el email o la contraseña.</b></p>
       <input class="form-submit" type="submit" value="Login">
     </form>
   </div>
@@ -37,8 +39,32 @@ export default {
   data: () => ({
     username: "",
     password: "",
-    error: false
-  })
+    error: false,
+    tenantTitle: ""
+  }),
+  mounted: function () {
+    this.$nextTick(function () {
+      if (this.$route.query.ERROR) {
+        this.error = true;
+      }
+      switch (this.$route.query.tenant || this.$route.query.TENANT) {
+        case 'Reclamos':
+          this.tenantTitle = "Reclamos";
+          break;
+        case 'VentaPasajes':
+          this.tenantTitle = "Venta de Pasajes";
+          break;
+        case 'ManejoItinerarios':
+          this.tenantTitle = "Manejo de Itinerarios";
+          break;
+        case 'AlquileresAutos':
+          this.tenantTitle = "Alquileres de Autos";
+          break;
+        default:
+          this.tenantTitle="";
+      }
+    })
+  }
 };
 </script>
 
@@ -83,6 +109,7 @@ export default {
   }
 }
 .form-submit {
+  border-radius: 10px;
   background: #1ab188;
   border: none;
   color: white;
