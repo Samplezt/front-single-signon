@@ -1,5 +1,6 @@
 
 <template>
+
   <div class="login">
     <h1 class="title"><b-icon icon="cursor-fill" shift-h="-7" shift-v="12"></b-icon> Login {{tenantTitle}}</h1>
     <form class="form" action="https://ssoia.herokuapp.com/LoginCallback" method="post">
