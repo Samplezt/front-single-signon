@@ -29,7 +29,7 @@
       <div class="selector">
         <input type="hidden" name="tenant" class="form-control" :value="$route.query.tenant || $route.query.TENANT">
       </div>
-      <p v-if="error" class="error"><b>Has introducido mal el email o la contraseña.</b></p>
+      <p v-if="error" class="error"><b>Usuario y/o contraseña incorrecta.</b></p>
       <input class="form-submit" type="submit" value="Login">
     </form>
   </div>
