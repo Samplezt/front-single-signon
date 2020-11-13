@@ -76,6 +76,7 @@ export default {
 .title {
   text-align: center;
   color: white;
+  font-size: 25px;
 }
 .form {
   margin: 3rem auto;
